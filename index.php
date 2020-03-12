@@ -16,7 +16,7 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Workflow tracker for the working Github repository">
+  <meta name="description" content="Webapp used to visualize the daily variance of the covid-19 in Italy.">
   <link rel="icon" href="res/images/italy.png">
   <meta name="author" content="Maxelweb">
   <title>Covid 19 - Italy</title>
