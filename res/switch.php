@@ -9,9 +9,7 @@
 
 require_once 'config.php';
 
-switch ($name) {
-	
-	default:
-		require_once("pages/graphs.php");
-		break;
-}
+if(!$name)
+	require_once("pages/home.php");
+else
+	require_once("pages/graphs.php");

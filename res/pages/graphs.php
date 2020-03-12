@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Workflow setup page
+ *  Graph setup page
  *  @author Maxelweb (marianosciacco.it)
  *  @version 1.0
  */
@@ -10,22 +10,23 @@
 require_once("data.php");
 
 
-if(empty($data))
+if(empty($data) || !in_array($name, $_data))
   echo "<p class='text-danger my-4 text-center'><i class='far fa-frown'></i> Non è stato possibile caricare i dati. Riprova più tardi.</p>";
 else
 { 
 
 $latest = $data[count($data)-1];
+$formatname = ucfirst(str_replace("_", " ", $name));
   
 ?>
         
   <h3 class="text-center text-secondary mt-5 mb-4">Dati statistici COVID-19 - Italia</h3>
-  <h6 class="text-center text-muted small mb-4">Ultimo aggiornamento pagina: <strong><?=date("Y-m-d  H:i:s");?></strong></h6>
+  <h4 class="text-center text-primary mb-4"><?=$formatname;?></h4>
   
   <div class="row my-3">
     <div class="col-lg-12 my-3 mx-auto">  
       <div class="card">
-        <div class="card-header"><i class="fas fa-charts-bar"></i> Statistiche generali</div>
+        <div class="card-header"><i class="fas fa-chart-bar"></i> Statistiche generali</div>
         <div class="card-body">
           <ul>
             <li><strong>Totale attualmente positivi:</strong> <?=$latest['totale_attualmente_positivi']?></li>
@@ -46,13 +47,14 @@ $latest = $data[count($data)-1];
     
      <div class="col-lg-12 my-3 mx-auto">  
       <div class="card">
-        <div class="card-header"><i class="fas fa-charts-bar"></i> Grafico andamento e varianza</div>
+        <div class="card-header"><i class="fas fa-chart-line"></i> Grafico andamento e varianza</div>
         <div class="card-body">
+          <h4 class="text-center text-primary mb-4"><?=$formatname;?></h4>
           <div id="grafico_main"></div>
           <div id="grafico_var"></div>
         </div>
         <div class="card-footer text-muted small">
-          <i class="fas fa-history"></i> Ultimo aggiornamento grafico: <strong><?=$latest['data'];?></strong>
+          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=$latest['data'];?></strong>
         </div>
       </div>
     </div>
@@ -63,12 +65,12 @@ $latest = $data[count($data)-1];
 <script>
 
 google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawCurveTypes);
+google.charts.setOnLoadCallback(drawCurveTypesMain);
 
-function drawCurveTypes() {
+function drawCurveTypesMain() {
       var data = new google.visualization.DataTable();
       data.addColumn('string', 'Data');
-      data.addColumn('number', 'Nuovi positivi');
+      data.addColumn('number', '<?=$formatname;?>');
       data.addColumn({ type: 'number', role: 'annotation' });
 
       data.addRows([ 
@@ -77,7 +79,7 @@ function drawCurveTypes() {
           foreach(array_slice($data,-10,10) as $elem)
           {
             $i++;
-            echo "['".explode(' ', $elem['data'])[0]."',".$elem['nuovi_attualmente_positivi'].",".$elem['nuovi_attualmente_positivi']."]";
+            echo "['".explode(' ', $elem['data'])[0]."',".$elem[$name].",".$elem[$name]."]";
             if($i != count($data)) echo ", ";
           }
         ?>
@@ -124,7 +126,7 @@ function drawCurveTypesVariance() {
             if($i == 0) 
               continue;
             else
-              $var = number_format((($x[$i]['nuovi_attualmente_positivi'] - $x[$i-1]['nuovi_attualmente_positivi']) / $x[$i-1]['nuovi_attualmente_positivi'])*100);
+              $var = number_format((($x[$i][$name] - $x[$i-1][$name]) / $x[$i-1][$name])*100);
 
             echo "['".explode(' ', $x[$i]['data'])[0]."',"
                     .$var.","
@@ -146,6 +148,7 @@ function drawCurveTypesVariance() {
         series: {
           1: {curveType: 'function'}
         },
+        colors:['#1c91c0'],
         height: 500,
         pointSize: 4,
       };

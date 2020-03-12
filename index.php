@@ -31,7 +31,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
       <a class="navbar-brand" href="./">
-        <img src="res/images/italy.png" width="32" height="32" alt="">
+        <img src="res/images/italy.png" width="26" height="26" alt="">
       Covid-19 - Italia</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -40,14 +40,17 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-chart-bar"></i> Grafici
+              <i class="fas fa-chart-bar"></i> Grafici e dati
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#"><i class="far fa-dot-circle"></i> </a>
+            <?php
+              foreach($_data as $type)
+               echo "<a class='dropdown-item' href='$type'><i class='far fa-dot-circle'></i> ".ucfirst(str_replace('_', ' ', $type))."</a>";
+            ?>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://github.com/pcm-dpc/COVID-19" target="_blank"><i class="fas fa-sync-alt"></i> Dati DPC</a>
+            <a class="nav-link" href="https://github.com/pcm-dpc/COVID-19" target="_blank"><i class="fas fa-database"></i> Dati DPC</a>
           </li>
         </ul>
       </div>
@@ -59,7 +62,8 @@
   </div>
 
   <div class="container text-secondary text-center my-4 small">
-    <a class="text-info" href='<?=REPO;?>'>Covid-19 - Italy <?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by Mariano Sciacco
+    <a class="text-info" href='<?=REPO;?>'>Covid-19 - Italy v<?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by Mariano Sciacco <br>
+    I dati sono reperiti da parte del <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile</a>
   </div>
 
 
