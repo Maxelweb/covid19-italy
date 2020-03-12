@@ -62,8 +62,8 @@
   </div>
 
   <div class="container text-secondary text-center my-4 small">
-    <a class="text-info" href='<?=REPO;?>'>Covid-19 - Italy v<?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by Mariano Sciacco <br>
-    I dati sono reperiti da parte del <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile</a>
+    <a class="text-info" href='<?=REPO;?>'>Covid19 - Italy v<?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by <a href="https://marianosciacco.it">Mariano Sciacco</a> <br>
+    Questo è un sito <strong>NON</strong> ufficiale. I dati sono reperiti da parte del <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile.</a>
   </div>
 
 
