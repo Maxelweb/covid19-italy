@@ -3,7 +3,7 @@
 /**
  *  Graph setup page
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.0
+ *  @version 1.1
  */
 
 
@@ -26,18 +26,19 @@ $formatname = ucfirst(str_replace("_", " ", $name));
   <div class="row my-3">
     <div class="col-lg-12 my-3 mx-auto">  
       <div class="card">
-        <div class="card-header"><i class="fas fa-chart-bar"></i> Statistiche generali</div>
+        <div class="card-header"><i class="fas fa-chart-bar"></i> Statistiche generali a oggi</div>
         <div class="card-body">
           <ul>
-            <li><strong>Totale attualmente positivi:</strong> <?=$latest['totale_attualmente_positivi']?></li>
-            <li><strong>Totale casi:</strong> <?=$latest['totale_casi']?></li>
-            <li><strong>Totale tamponi:</strong> <?=$latest['tamponi']?></li>
-            <li><strong>Totale dimessi guariti:</strong> <?=$latest['dimessi_guariti']?></li>
-            <li><strong>Totale deceduti:</strong> <?=$latest['deceduti']?></li>
+            <li><strong class="text-primary">Totale attualmente positivi:</strong> <?=nformat($latest['totale_positivi']);?></li>
+            <li><strong class="text-info">Variazione totale positivi:</strong> <?=nformat($latest['variazione_totale_positivi'])?></li>
+            <li><strong class="text-secondary">Totale casi:</strong> <?=nformat($latest['totale_casi'])?></li>
+            <li><strong>Totale tamponi:</strong> <?=nformat($latest['tamponi'])?></li>
+            <li><strong>Totale dimessi guariti:</strong> <?=nformat($latest['dimessi_guariti'])?></li>
+            <li><strong class="text-danger">Totale deceduti:</strong> <?=nformat($latest['deceduti'])?></li>
           </ul>
         </div>
         <div class="card-footer text-muted small">
-          <i class="fas fa-history"></i> Ultimo aggiornamento dati: <strong><?=$latest['data'];?></strong>
+          <i class="fas fa-history"></i> Ultimo aggiornamento dati: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
         </div>
       </div>
     </div>
@@ -64,7 +65,7 @@ $formatname = ucfirst(str_replace("_", " ", $name));
 
 <script>
 
-google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.load('current', {packages: ['corechart', 'line'], language: 'it'});
 google.charts.setOnLoadCallback(drawCurveTypesMain);
 
 function drawCurveTypesMain() {
@@ -79,7 +80,7 @@ function drawCurveTypesMain() {
           foreach(array_slice($data,-10,10) as $elem)
           {
             $i++;
-            echo "['".explode(' ', $elem['data'])[0]."',".$elem[$name].",".$elem[$name]."]";
+            echo "['".explode('T', $elem['data'])[0]."',".$elem[$name].",".$elem[$name]."]";
             if($i != count($data)) echo ", ";
           }
         ?>
@@ -109,7 +110,7 @@ function drawCurveTypesMain() {
 
 <script>
 
-google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.load('current', {packages: ['corechart', 'line'], language: 'it'});
 google.charts.setOnLoadCallback(drawCurveTypesVariance);
 
 function drawCurveTypesVariance() {
@@ -128,7 +129,7 @@ function drawCurveTypesVariance() {
             else
               $var = number_format((($x[$i][$name] - $x[$i-1][$name]) / $x[$i-1][$name])*100);
 
-            echo "['".explode(' ', $x[$i]['data'])[0]."',"
+            echo "['".explode('T', $x[$i]['data'])[0]."',"
                     .$var.","
                     .$var."]";
             if($i != count($x)) echo ", ";
