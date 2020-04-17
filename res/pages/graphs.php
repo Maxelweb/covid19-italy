@@ -126,7 +126,7 @@ function drawCurveTypesVariance() {
             if($i == 0) 
               continue;
             else
-              $var = number_format((($x[$i][$name] - $x[$i-1][$name]) / $x[$i-1][$name])*100);
+              $var = number_format((($x[$i][$name] - $x[$i-1][$name]) / $x[$i-1][$name])*100, 2);
 
             echo "['".explode(' ', $x[$i]['data'])[0]."',"
                     .$var.","
@@ -143,7 +143,8 @@ function drawCurveTypesVariance() {
           title: 'Tempo'
         },
         vAxis: {
-          title: 'Varianza percentuale'
+          title: 'Varianza percentuale',
+          format: '#\'%\''
         },
         series: {
           1: {curveType: 'function'}
