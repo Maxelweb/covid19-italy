@@ -7,157 +7,309 @@
  */
 
 
-require_once("data.php");
+require_once("data_graphs.php");
 
 
 if(empty($data) || !in_array($name, $_data))
-  echo "<p class='text-danger my-4 text-center'><i class='far fa-frown'></i> Non è stato possibile caricare i dati. Riprova più tardi.</p>";
+  outputErrorLoading();
 else
 { 
 
-$latest = $data[count($data)-1];
-$formatname = ucfirst(str_replace("_", " ", $name));
+  $latest = $data[count($data)-1];
+  $formatname = nameFormat($name);
   
 ?>
         
   <h3 class="text-center text-secondary mt-5 mb-4">Dati statistici COVID-19 - Italia</h3>
-  <h4 class="text-center text-primary mb-4"><?=$formatname;?></h4>
-  
+  <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
+
   <div class="row my-3">
-    <div class="col-lg-12 my-3 mx-auto">  
+     <div class="col-lg-12 my-3 mx-auto">  
       <div class="card">
-        <div class="card-header"><i class="fas fa-chart-bar"></i> Statistiche generali a oggi</div>
+        <div class="card-header"><i class="fas fa-poll"></i> Trend</div>
         <div class="card-body">
-          <ul>
-            <li><strong class="text-primary">Totale attualmente positivi:</strong> <?=nformat($latest['totale_positivi']);?></li>
-            <li><strong class="text-info">Variazione totale positivi:</strong> <?=nformat($latest['variazione_totale_positivi'])?></li>
-            <li><strong class="text-secondary">Totale casi:</strong> <?=nformat($latest['totale_casi'])?></li>
-            <li><strong>Totale tamponi:</strong> <?=nformat($latest['tamponi'])?></li>
-            <li><strong>Totale dimessi guariti:</strong> <?=nformat($latest['dimessi_guariti'])?></li>
-            <li><strong class="text-danger">Totale deceduti:</strong> <?=nformat($latest['deceduti'])?></li>
-          </ul>
+          <?php
+
+            $today = date("d", strtotime($latest['data'])) == date("d") ? "oggi" : "ieri";
+           
+            if(($latest[$name] - $data[count($data)-2][$name]) > 0)
+              echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> L'ultimo trend registrato ($today) è in <strong>aumento</strong>.</div>";
+            else
+              echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> L'ultimo trend registrato ($today) è in <strong>diminuzione</strong></div>";
+
+            if(($media = calcTrend($data, $name, 7)) > 0)
+              echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> Il trend dell'ultima settimana è in <strong>aumento</strong> (media: $media)</div>";
+            else
+              echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> Il trend dell'ultima settimana è in <strong>diminuzione</strong> (media: $media)</div>";
+
+            if(($media = calcTrend($data, $name, 15)) > 0)
+              echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> Il trend degli ultimi 15 giorni è in <strong>aumento</strong> (media: $media)</div>";
+            else
+              echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> Il trend degli ultimi 15 giorni è in <strong>diminuzione</strong> (media: $media)</div>";
+
+            if(($media = calcTrend($data, $name, 30)) > 0)
+              echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> Il trend degli ultimi 30 giorni è in <strong>aumento</strong> (media: $media)</div>";
+            else
+              echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> Il trend degli ultimi 30 giorni è in <strong>diminuzione</strong> (media: $media)</div>";
+
+            if(($media = calcTrend($data, $name, 60)) > 0)
+              echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> Il trend degli ultimi 60 giorni è in <strong>aumento</strong> (media: $media)</div>";
+            else
+              echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> Il trend degli ultimi 60 giorni è in <strong>diminuzione</strong> (media: $media)</div>";
+
+          ?>
         </div>
         <div class="card-footer text-muted small">
-          <i class="fas fa-history"></i> Ultimo aggiornamento dati: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
+          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
         </div>
       </div>
     </div>
   </div>
 
   <div class="row my-3">
-    
      <div class="col-lg-12 my-3 mx-auto">  
       <div class="card">
         <div class="card-header"><i class="fas fa-chart-line"></i> Grafico andamento e varianza</div>
         <div class="card-body">
-          <h4 class="text-center text-primary mb-4"><?=$formatname;?></h4>
+          <h4 class="text-center">Andamento del dato</h4>
           <div id="grafico_main"></div>
+          <hr>
+          <h4 class="text-center">Varianza percentuale <br> <small>(rispetto al giorno precedente)</small></h4>
           <div id="grafico_var"></div>
+          <hr>
+          <h4 class="text-center">Incremento o decremento giornaliero</h4>
+          <div id="grafico_increment"></div>
         </div>
         <div class="card-footer text-muted small">
-          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=$latest['data'];?></strong>
+          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
         </div>
       </div>
     </div>
-
   </div>
+
+  <?php if($name == "nuovi_positivi"){ ?>
+
+  <div class="row my-3">
+     <div class="col-lg-12 my-3 mx-auto">  
+      <div class="card">
+        <div class="card-header"><i class="fas fa-heartbeat"></i> Rapporto nuovi positivi e tamponi effettuati</div>
+        <div class="card-body">
+          <div id="grafico_rapporto"></div>
+        </div>
+        <div class="card-footer text-muted small">
+          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php } ?>
 
 
 <script>
+
+// Resize
+
+$(window).resize(function(){
+  drawCurveTypesMain();
+  drawCurveTypesVariance();
+  drawCurveTypesIncrement();
+  <?php if($name == "nuovi_positivi") { echo "drawCurveTypesRapportoPositiviTamponi();"; } ?>
+});
+
+
+// Dati
 
 google.charts.load('current', {packages: ['corechart', 'line'], language: 'it'});
 google.charts.setOnLoadCallback(drawCurveTypesMain);
 
-function drawCurveTypesMain() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Data');
-      data.addColumn('number', '<?=$formatname;?>');
-      data.addColumn({ type: 'number', role: 'annotation' });
-
-      data.addRows([ 
-        <?php 
-          $i = 0;
-          foreach(array_slice($data,-10,10) as $elem)
-          {
-            $i++;
-            echo "['".explode('T', $elem['data'])[0]."',".$elem[$name].",".$elem[$name]."]";
-            if($i != count($data)) echo ", ";
-          }
-        ?>
-      ]);
-
-      
-
-      var options = {
-        hAxis: {
-          title: 'Tempo'
-        },
-        vAxis: {
-          title: 'Numero di persone'
-        },
-        series: {
-          1: {curveType: 'function'}
-        },
-        height: 500,
-        pointSize: 4,
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('grafico_main'));
-      chart.draw(data, options);
-    }
-
-</script>
-
-<script>
-
 google.charts.load('current', {packages: ['corechart', 'line'], language: 'it'});
 google.charts.setOnLoadCallback(drawCurveTypesVariance);
 
+google.charts.load('current', {packages: ['corechart', 'line'], language: 'it'});
+google.charts.setOnLoadCallback(drawCurveTypesIncrement);
+
+<?php if($name == "nuovi_positivi") { ?>
+
+google.charts.load('current', {packages: ['corechart', 'line'], language: 'it'});
+google.charts.setOnLoadCallback(drawCurveTypesRapportoPositiviTamponi);
+
+<?php } ?>
+
+function drawCurveTypesMain() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Data');
+  data.addColumn('number', '<?=$formatname;?>');
+  data.addColumn({ type: 'number', role: 'annotation' });
+
+  data.addRows([ 
+    <?php 
+      $i = 0;
+      foreach(array_slice($data,-10,10) as $elem)
+      {
+        $i++;
+        echo "['".explode('T', $elem['data'])[0]."',".$elem[$name].",".$elem[$name]."]";
+        if($i != count($data)) echo ", ";
+      }
+    ?>
+  ]);
+
+  var options = {
+    hAxis: {
+      title: 'Tempo'
+    },
+    vAxis: {
+      title: 'Numero di persone'
+    },
+    series: {
+      1: {curveType: 'function'}
+    },
+    height: 400,
+    pointSize: 4,
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('grafico_main'));
+  chart.draw(data, options);
+}
+
+
+// Varianza
+
 function drawCurveTypesVariance() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Data');
-      data.addColumn('number', 'Varianza %');
-      data.addColumn({ type: 'number', role: 'annotation' });
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Data');
+  data.addColumn('number', 'Varianza %');
+  data.addColumn({ type: 'number', role: 'annotation' });
 
-      data.addRows([ 
-        <?php 
-          $x = array_slice($data,-11,11);
-          for($i = 0; $i<count($x); $i++)
-          {
-            if($i == 0) 
-              continue;
-            else
-              $var = number_format((($x[$i][$name] - $x[$i-1][$name]) / $x[$i-1][$name])*100, 2);
+  data.addRows([ 
+    <?php 
+      $x = array_slice($data,-11,11);
+      for($i = 0; $i<count($x); $i++)
+      {
+        if($i == 0) 
+          continue;
+        else
+          $var = number_format((($x[$i][$name] - $x[$i-1][$name]) / $x[$i-1][$name])*100, 2);
 
-            echo "['".explode('T', $x[$i]['data'])[0]."',"
-                    .$var.","
-                    .$var."]";
-            if($i != count($x)) echo ", ";
-          }
-        ?>
-      ]);
+        echo "['".explode('T', $x[$i]['data'])[0]."',"
+                .$var.","
+                .$var."]";
+        if($i != count($x)) echo ", ";
+      }
+    ?>
+  ]);
 
-      
+  var options = {
+    hAxis: {
+      title: 'Tempo'
+    },
+    vAxis: {
+      title: 'Varianza percentuale',
+      format: '#\'%\''
+    },
+    series: {
+      1: {curveType: 'function'}
+    },
+    colors:['#1c91c0'],
+    height: 400,
+    pointSize: 4,
+  };
 
-      var options = {
-        hAxis: {
-          title: 'Tempo'
-        },
-        vAxis: {
-          title: 'Varianza percentuale',
-          format: '#\'%\''
-        },
-        series: {
-          1: {curveType: 'function'}
-        },
-        colors:['#1c91c0'],
-        height: 500,
-        pointSize: 4,
-      };
+  var chart = new google.visualization.LineChart(document.getElementById('grafico_var'));
+  chart.draw(data, options);
+}
 
-      var chart = new google.visualization.LineChart(document.getElementById('grafico_var'));
-      chart.draw(data, options);
-    }
+
+// Incremento / decremento
+
+function drawCurveTypesIncrement() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Data');
+  data.addColumn('number', '<?=$formatname;?>');
+  data.addColumn({ type: 'number', role: 'annotation' });
+
+  data.addRows([ 
+     <?php 
+      $x = array_slice($data,-11,11);
+      for($i = 0; $i<count($x); $i++)
+      {
+        if($i == 0) 
+          continue;
+        else
+          $var = $x[$i][$name] - $x[$i-1][$name];
+
+        echo "['".explode('T', $x[$i]['data'])[0]."',"
+                .$var.","
+                .$var."]";
+        if($i != count($x)) echo ", ";
+      }
+    ?>
+  ]);
+
+  var options = {
+    hAxis: {
+      title: 'Tempo'
+    },
+    vAxis: {
+      title: 'Incremento persone'
+    },
+    series: {
+      1: {curveType: 'function'}
+    },
+    colors:['#4d1cc0'],
+    height: 400,
+    pointSize: 4,
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('grafico_increment'));
+  chart.draw(data, options);
+}
+
+
+// Rapporto positivi / tamponi
+
+function drawCurveTypesRapportoPositiviTamponi() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Data');
+  data.addColumn('number', 'Rapporto positivi e tamponi');
+  data.addColumn({ type: 'number', role: 'annotation' });
+
+  data.addRows([ 
+     <?php 
+      $x = array_slice($data,-11,11);
+      for($i = 0; $i<count($x); $i++)
+      {
+        if($i == 0) 
+          continue;
+        else
+          $var = ($x[$i]['nuovi_positivi'])/($x[$i]['tamponi'] - $x[$i-1]['tamponi']);
+
+        echo "['".explode('T', $x[$i]['data'])[0]."',"
+                .$var.","
+                .$var."]";
+        if($i != count($x)) echo ", ";
+      }
+    ?>
+  ]);
+
+  var options = {
+    hAxis: {
+      title: 'Tempo'
+    },
+    vAxis: {
+      title: 'Rapporto positivi e tamponi'
+    },
+    series: {
+      1: {curveType: 'function'}
+    },
+    colors:['#c01c1c'],
+    height: 400,
+    pointSize: 4,
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('grafico_rapporto'));
+  chart.draw(data, options);
+}
 
 </script>
 

@@ -18,8 +18,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Webapp used to visualize the daily variance of the covid-19 in Italy.">
   <link rel="icon" href="res/images/italy.png">
-  <meta name="author" content="Maxelweb">
-  <title>Covid 19 - Italy</title>
+  <meta name="author" content="Mariano Sciacco">
+  <title>Covid 19 - Italia</title>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- Icono icons -->
@@ -28,11 +28,13 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="border-bottom: 2px solid #9b1f2b;">
     <div class="container">
       <a class="navbar-brand" href="./">
         <img src="res/images/italy.png" width="26" height="26" alt="">
-      Covid-19 - Italia</a>
+        Covid-19 - Italia &nbsp;
+        <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold'>".nameFormat($name)."</span>" : "")?>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -57,7 +59,7 @@
     </div>
   </nav>
 
-  <div class="container" id="loading">
+  <div class="container" style="margin-top: 100px" id="loading">
     <p class="text-center my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
   </div>
 
