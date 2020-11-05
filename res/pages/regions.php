@@ -3,7 +3,7 @@
 /**
  *  Data info per regions
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.1
+ *  @version 1.2
  */
 
 

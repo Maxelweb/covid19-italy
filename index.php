@@ -3,7 +3,7 @@
 /**
  *  Index page with async load
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.0
+ *  @version 1.2
  */
 
  require_once 'res/config.php';
@@ -33,7 +33,7 @@
       <a class="navbar-brand" href="./">
         <img src="res/images/italy.png" width="26" height="26" alt="">
         Covid-19 - Italia &nbsp;
-        <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold'>".nameFormat($name)."</span>" : "")?>
+        <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold d-none d-sm-inline'>".nameFormat($name)."</span>" : "")?>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,6 +50,9 @@
                echo "<a class='dropdown-item' href='$type'><i class='far fa-dot-circle'></i> ".ucfirst(str_replace('_', ' ', $type))."</a>";
             ?>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://unpx.net/covid/" target="_blank"><i class="fas fa-globe-americas"></i> Status Regioni</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/pcm-dpc/COVID-19" target="_blank"><i class="fas fa-database"></i> Dati DPC</a>

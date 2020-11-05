@@ -3,7 +3,7 @@
 /**
  *  Configuration file
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.1
+ *  @version 1.2
  */
 
 
@@ -14,7 +14,7 @@
  */
 
 
-define("VERSION", "1.1");
+define("VERSION", "1.2");
 define("REPO", "https://github.com/Maxelweb/covid19-italy");
 define("DATA_DPC", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json");
 define("DATA_DPC_REGIONS", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json");

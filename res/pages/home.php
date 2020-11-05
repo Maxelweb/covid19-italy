@@ -3,7 +3,7 @@
 /**
  *  Homepage
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.1
+ *  @version 1.2
  */
 
 require_once("data_home.php");
@@ -75,6 +75,7 @@ else {
         <div class="card-header"><i class="fas fa-history"></i> Aggiornamenti sito</div>
         <div class="card-body">
           <ul>
+          	<li>v1.2 (05 novembre 2020) - Aggiornamento dei grafici e dell'estetica del sito</li>
           	<li>v1.1 (17 aprile 2020) - Aggiornamento formato dati</li>
             <li>v1.0 (13 marzo 2020) - Rilascio iniziale</li>
           </ul>

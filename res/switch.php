@@ -3,7 +3,7 @@
 /**
  *  Page selector for the homepage
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.1
+ *  @version 1.2
  */
 
 
