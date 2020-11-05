@@ -19,7 +19,7 @@
   <meta name="description" content="Webapp used to visualize the daily variance of the covid-19 in Italy.">
   <link rel="icon" href="res/images/italy.png">
   <meta name="author" content="Mariano Sciacco">
-  <title>Covid 19 - Italia</title>
+  <title>Covid 19 - Italy</title>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- Icono icons -->

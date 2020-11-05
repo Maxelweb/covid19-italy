@@ -47,7 +47,7 @@ else
                   echo '<tr>
                           <td>'.$elem["denominazione_regione"].'</td>
                           <td>'.nformat($elem[$name]).'</td>
-                          <td>'.nformat(($elem[$name]/$current_name_value)*100).'%</td>
+                          <td>'.number_format((($elem[$name]/$current_name_value)*100), 2, ',', '.').'%</td>
                           <td><small>'.(empty($elem["note"]) ? "-" : $elem["note"]).'</small></td>
                         </tr>';
                 }
