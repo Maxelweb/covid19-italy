@@ -1,6 +1,7 @@
 ![](https://i.imgur.com/G9o7jRb.png)
 
-# Covid19 - Italy
+# CovItaly.it 
+###  Covid19 - Italy
 
 Webapp used to visualize the daily variance of the Covid-19 in Italy.
 

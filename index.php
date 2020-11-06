@@ -16,10 +16,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Webapp used to visualize the daily variance of the covid-19 in Italy.">
+  <meta name="description" content="CovItaly, grafici e dati sulla diffusione del virus covid-19 in italia. I dati sono presi direttamente dal Dipartimento di Protezione Civile Italiano.">
   <link rel="icon" href="res/images/italy.png">
   <meta name="author" content="Mariano Sciacco">
-  <title>Covid 19 - Italy</title>
+  <title>CovItaly - Covid 19 Italy</title>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- Icono icons -->
@@ -32,7 +32,7 @@
     <div class="container">
       <a class="navbar-brand" href="./">
         <img src="res/images/italy.png" width="26" height="26" alt="">
-        Covid-19 - Italia &nbsp;
+        CovItaly &nbsp;
         <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold d-none d-sm-inline'>".nameFormat($name)."</span>" : "")?>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
