@@ -52,7 +52,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://unpx.net/covid/" target="_blank"><i class="fas fa-globe-americas"></i> Status Regioni</a>
+            <a class="nav-link" href="https://1dotd4.github.io/covid/" target="_blank"><i class="fas fa-globe-americas"></i> Status Regioni</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/pcm-dpc/COVID-19" target="_blank"><i class="fas fa-database"></i> Dati DPC</a>
