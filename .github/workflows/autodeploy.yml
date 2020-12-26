@@ -3,7 +3,6 @@ name: Website Autodeploy
 on: 
   push:
     paths-ignore:
-    - '.github/**'
     - '**.md'
 
 jobs:
@@ -11,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Rename for production
-      run: |
-        rm -rf .github
-        rm .htaccess
-        mv .htaccess_prod .htaccess
     - name: git-ftp push
       uses: sebastianpopp/git-ftp-action@releases/v2
       with:
