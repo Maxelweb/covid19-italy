@@ -39,7 +39,7 @@ require_once("data_regions.php");
 	<div class="col-lg-6 my-3">
 		<div class="card bg-light">
 	        <div class="card-body">
-				<h2 class="my-3"><i class="fas fa-globe"></i> Aggiornamento zone in italia</h2>
+				<h2 class="my-3"><i class="fas fa-globe"></i> Zone per regione</h2>
 			
 				<p>La seguente mappa è disponibile nel dettaglio nel <a href="<?=DATA_GOV_ZONES_FAQ;?>">sito del governo</a>.</p>
 

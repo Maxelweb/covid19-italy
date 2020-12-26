@@ -29,6 +29,9 @@ else
         <div class="card-header"><i class="fas fa-poll"></i> Trend</div>
         <div class="card-body">
           <?php
+            $media = ($latest[$name] - $data[count($data)-2][$name]);
+
+            echo '<div class="trend-number">'.nformat($latest[$name]).' <span>('.($media>0?'+':'').(nformat($media)).')</span></div>';
 
             $today = date("d", strtotime($latest['data'])) == date("d") ? "oggi" : "ieri";
            
@@ -36,6 +39,8 @@ else
               echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> L'ultimo trend registrato ($today) è in <strong>aumento</strong>.</div>";
             else
               echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> L'ultimo trend registrato ($today) è in <strong>diminuzione</strong></div>";
+
+            echo '<hr class="my-3">';
 
             if(($media = calcTrend($data, $name, 7)) > 0)
               echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> Il trend dell'ultima settimana è in <strong>aumento</strong> (media: $media)</div>";
