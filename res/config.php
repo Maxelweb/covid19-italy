@@ -3,7 +3,6 @@
 /**
  *  Configuration file
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.2
  */
 
 
@@ -20,8 +19,14 @@ define("DATA_DPC", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/da
 define("DATA_DPC_REGIONS", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json");
 define("DATA_DPC_GLOBAL_LATEST", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale-latest.json");
 define("DATA_GOV_ZONES_FAQ", "http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638");
+define("DATA_GOV_CHRISTMAS_FAQ", "http://www.governo.it/it/faq-natale");
 
 $name = isset($_GET['name']) ? $_GET['name'] : '';
+
+function currentUrl() {
+	global $name;
+	return 'https://' . $_SERVER['HTTP_HOST'] . '/' . $name;
+}
 
 function nformat($n) { // numbers
 	return number_format($n, 0, ',', '.'); 

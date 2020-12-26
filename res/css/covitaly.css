@@ -2,8 +2,16 @@ body {
 	background-color: #262626;
 }
 
+a.underlined, .cov-footer a {
+	text-decoration: underline;
+}
+
+.text-success {
+	color: #4c9331 !important;
+}
+
 .cov-navbar {
-	border-bottom: 2px solid #9b1f2b;
+	border-bottom: 1px solid #555d64;
 }
 
 .distribution-map {
@@ -12,7 +20,7 @@ body {
 }
 
 .distribution-map svg{
-	max-height: 450px;
+	max-height: 400px;
 }
 
 .trend-number {
@@ -30,6 +38,32 @@ body {
 	height: auto !important;
 	cursor: default !important;
 	max-height: 445px;
+}
+
+.cella_rossa {
+    color: #fff;
+    min-width: 110px;
+    float: left;
+    cursor: pointer;
+    background-color: #e2001a;
+    border: 1px solid #ffffff;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.cella_arancione {
+    color: #fff;
+    min-width: 110px;
+    float: left;
+    cursor: pointer;
+    background-color: #ee7f01;
+    border: 1px solid #ffffff;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 /*#abruzzo, #basilicata, #calabria, #campania, #emilia-romagna, #friuli, 

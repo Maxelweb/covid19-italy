@@ -3,8 +3,7 @@
 /**
  *  Data info per regions
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.2
- */
+*/
 
 
 require_once("data_regions.php");
@@ -24,18 +23,15 @@ else
   });
 
 ?>
+  <h3 class="text-center text-light mt-5 mb-4" id="distribuzione">Distribuzione del dato <a class="text-muted small" href="#distribuzione"><i class="fas fa-link"></i></a></h3>
   <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
   
   <div class="row my-3">
-    <div class="col-lg-12 my-3 mx-auto">  
+    <div class="col-lg-8 my-3">  
       <div class="card">
         <div class="card-header"><i class="fas fa-chart-area"></i> Distribuzione del dato per regioni</div>
         <div class="card-body">
-          
-          <?=$_distribution_image;?>
-
           <p>I dati sono ordinati in modo discendente sulla base del dato preso in esame (<?=$formatname;?>).</p>
-
           <div class="table-responsive">
             <table class="table table-striped table-bordered">
               <tr>
@@ -65,6 +61,17 @@ else
         </div>
         <div class="card-footer text-muted small">
           <i class="fas fa-history"></i> Ultimo aggiornamento dati: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 my-3">  
+      <div class="card">
+        <div class="card-header"><i class="fas fa-globe"></i> Distribuzione del dato in Italia</div>
+        <div class="card-body">
+          <?=$_distribution_image;?>
+        </div>
+        <div class="card-footer text-muted small">
+          <i class="fas fa-history"></i> Ultimo aggiornamento: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
         </div>
       </div>
     </div>

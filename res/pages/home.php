@@ -3,8 +3,7 @@
 /**
  *  Homepage
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.2
- */
+*/
 
 require_once("data_home.php");
 require_once("data_regions.php");
@@ -16,7 +15,7 @@ require_once("data_regions.php");
 
 		<div class="card bg-light">
 	        <div class="card-body">
-				<h2 class="my-3"><i class="fas fa-chart-bar"></i> Grafici disponibili</h2>
+				<h2 class="my-3"><i class="fas fa-chart-bar"></i> Dati disponibili</h2>
 
 				<p>Clicca su uno dei seguenti link per visualizzare i grafici relativi.</p>
 
@@ -39,9 +38,10 @@ require_once("data_regions.php");
 	<div class="col-lg-6 my-3">
 		<div class="card bg-light">
 	        <div class="card-body">
-				<h2 class="my-3"><i class="fas fa-globe"></i> Zone per regione</h2>
+				<h2 class="my-3"><i class="fas fa-globe"></i> Status zone nelle regioni</h2>
 			
-				<p>La seguente mappa è disponibile nel dettaglio nel <a href="<?=DATA_GOV_ZONES_FAQ;?>">sito del governo</a>.</p>
+				<p>La seguente mappa è disponibile nel dettaglio nel <a class="underlined" href="<?=DATA_GOV_ZONES_FAQ;?>">sito del governo</a>.
+					<?php if(date('Y-m-d', time()) <= strtotime('2021-01-06')) { ?><br><a class="text-danger underlined" href="<?=DATA_GOV_CHRISTMAS_FAQ;?>">&raquo; Maggiori informazioni sul decreto natale</a> (24/12 - 06/01). <?php } ?></p>
 
 				<div id="loading-govmap">
 				    <p class="text-center text-muted my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
@@ -91,10 +91,10 @@ else {
 <div class="row my-3">
     <div class="col-lg-12 my-3 mx-auto">  
       <div class="card card-info">
-        <div class="card-header"><i class="fas fa-history"></i> Aggiornamenti sito</div>
+        <div class="card-header"><i class="fas fa-history"></i> Aggiornamenti di covitaly.it</div>
         <div class="card-body">
           <ul>
-          	<li>v1.3 (26 dicembre 2020) - Aggiornamento estetica del sito, aggiunta mappa delle zone in Italia</li>
+          	<li>v1.3 (26 dicembre 2020) - Aggiornata l'estetica del sito, aggiunta mappa delle zone, aggiunta mappa di distribuzione</li>
           	<li>v1.2 (05 novembre 2020) - Aggiornamento dei grafici e dell'estetica del sito</li>
           	<li>v1.1 (17 aprile 2020) - Aggiornamento formato dati</li>
             <li>v1.0 (13 marzo 2020) - Rilascio iniziale</li>

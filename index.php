@@ -3,8 +3,7 @@
 /**
  *  Index page with async load
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.2
- */
+*/
 
  require_once 'res/config.php';
 ?>
@@ -13,7 +12,6 @@
 <html lang="it">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="CovItaly, grafici e dati sulla diffusione del virus covid-19 in italia. I dati sono presi direttamente dal Dipartimento di Protezione Civile Italiano.">
@@ -32,7 +30,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top cov-navbar">
     <div class="container">
       <a class="navbar-brand" href="./">
-        <img src="res/images/italy.png" width="40" height="40" class="mr-2" alt="">
+        <img src="res/images/italy.png" width="32" height="32" class="mr-2" alt="">
         Cov<strong>Italy</strong> &nbsp;
         <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold d-none d-sm-inline'>".nameFormat($name)."</span>" : "")?>
       </a>
@@ -52,8 +50,14 @@
             ?>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://1dotd4.github.io/covid/" target="_blank"><i class="fas fa-globe-americas"></i> Status Regioni</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStatus" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-globe-americas"></i> Status Regioni
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownStatus">
+              <a class='dropdown-item' href='<?=DATA_GOV_ZONES_FAQ;?>' target="_blank"><i class='fas fa-info-circle'></i> Domande e risposte (governo.it)</a>
+              <a class='dropdown-item' href='https://1dotd4.github.io/covid/' target="_blank"><i class='fas fa-link'></i> Aggiornamenti e grafici aggiuntivi</a>            
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="https://github.com/pcm-dpc/COVID-19" target="_blank"><i class="fas fa-database"></i> Dati DPC</a>
@@ -64,12 +68,12 @@
   </nav>
 
   <div class="container" style="margin-top: 100px" id="loading">
-    <p class="text-center text-muted my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
+    <p class="text-center text-light my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
   </div>
 
-  <div class="container text-secondary text-center my-4 small">
-    <a class="text-info" href='<?=REPO;?>'>Covid19 - Italy v<?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by <a href="https://marianosciacco.it">Mariano Sciacco</a> <br>
-    Questo è un sito <strong>NON</strong> ufficiale. I dati sono reperiti da parte del <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile.</a>
+  <div class="container text-secondary text-center my-4 small cov-footer">
+    <a class="text-success" href='<?=REPO;?>'>Covid19 - Italy v<?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by <a href="https://marianosciacco.it" class="text-light">Mariano Sciacco</a> <br>
+    Questo è un sito <strong>NON</strong> ufficiale. I dati sono forniti da parte del <a class="text-danger" href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile.</a>
   </div>
 
 

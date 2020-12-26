@@ -3,8 +3,7 @@
 /**
  *  Page selector for the homepage
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.2
- */
+*/
 
 
 require_once 'config.php';

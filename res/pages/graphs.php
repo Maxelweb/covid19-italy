@@ -3,7 +3,6 @@
 /**
  *  Graph setup page
  *  @author Maxelweb (marianosciacco.it)
- *  @version 1.2
  */
 
 
@@ -20,7 +19,7 @@ else
   
 ?>
         
-  <h3 class="text-center text-secondary mt-5 mb-4">Dati statistici COVID-19 - Italia</h3>
+  <h3 class="text-center text-light mt-5 mb-4" id="cruscotto">Cruscotto informativo <a class="text-muted small" href="#cruscotto"><i class="fas fa-link"></i></a></h3>
   <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
 
   <div class="row my-3">
@@ -40,7 +39,7 @@ else
             else
               echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> L'ultimo trend registrato ($today) è in <strong>diminuzione</strong></div>";
 
-            echo '<hr class="my-3">';
+            echo '<hr class="my-3"> <h4 class="my-4">Trend precedenti</h4>';
 
             if(($media = calcTrend($data, $name, 7)) > 0)
               echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> Il trend dell'ultima settimana è in <strong>aumento</strong> (media: $media)</div>";
@@ -71,7 +70,7 @@ else
     </div>
     <div class="col-lg-6 my-3">  
       <div class="card">
-        <div class="card-header"><i class="fas fa-globe"></i> Distribuzione del dato per regioni</div>
+        <div class="card-header"><i class="fas fa-globe"></i> Distribuzione del dato in Italia</div>
         <div class="card-body">
           <?=$_distribution_image;?>
         </div>
@@ -81,6 +80,9 @@ else
       </div>
     </div>
   </div>
+
+  <h3 class="text-center text-light mt-5 mb-4" id="grafici">Grafici <a class="text-muted small" href="#grafici"><i class="fas fa-link"></i></a></h3>
+  <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
 
   <div class="row my-3">
      <div class="col-lg-12 my-3 mx-auto">  
