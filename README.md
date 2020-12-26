@@ -1,4 +1,4 @@
-![](https://i.imgur.com/G9o7jRb.png)
+![](res/images/banner.png)
 
 # CovItaly.it 
 ###  Covid19 - Italy
