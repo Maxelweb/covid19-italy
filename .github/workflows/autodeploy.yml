@@ -1,4 +1,4 @@
-name: Website Autodeploy
+name: Website Auto-deploy
 
 on: 
   push:
