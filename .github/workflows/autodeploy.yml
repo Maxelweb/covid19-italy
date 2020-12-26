@@ -1,0 +1,24 @@
+name: Website Autodeploy
+
+on: 
+  push:
+    paths-ignore:
+    - '.github/**'
+    - '**.md'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Rename for production
+      run: |
+        rm -rf .github
+        rm .htaccess
+        mv .htaccess_prod .htaccess
+    - name: git-ftp push
+      uses: sebastianpopp/git-ftp-action@releases/v2
+      with:
+        url: ${{ secrets.FTP_URL }}
+        user: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PWD }}
