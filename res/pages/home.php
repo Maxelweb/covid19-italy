@@ -41,7 +41,7 @@ require_once("data_regions.php");
 				<h2 class="my-3"><i class="fas fa-globe"></i> Status zone nelle regioni</h2>
 			
 				<p>La seguente mappa è disponibile nel dettaglio nel <a class="underlined" href="<?=DATA_GOV_ZONES_FAQ;?>">sito del governo</a>.
-					<?php if(date('Y-m-d', time()) <= strtotime('2021-01-06')) { ?><br><a class="text-danger underlined" href="<?=DATA_GOV_CHRISTMAS_FAQ;?>">&raquo; Maggiori informazioni sul decreto natale</a> (24/12 - 06/01). <?php } ?></p>
+					<?php if(date('Y-m-d', time()) <= strtotime('2021-01-06')) { ?><br><a class="underlined" href="<?=DATA_GOV_CHRISTMAS_FAQ;?>">&raquo; Maggiori informazioni sul decreto natale</a> (24/12 - 06/01). <?php } ?></p>
 
 				<div id="loading-govmap">
 				    <p class="text-center text-muted my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
