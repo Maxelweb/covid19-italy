@@ -10,4 +10,3 @@
 require_once 'config.php';
 
 $data = json_decode(file_get_contents(DATA_DPC_GLOBAL_LATEST), true);
-

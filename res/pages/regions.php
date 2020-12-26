@@ -31,6 +31,8 @@ else
       <div class="card">
         <div class="card-header"><i class="fas fa-chart-area"></i> Distribuzione del dato per regioni</div>
         <div class="card-body">
+          
+          <?=$_distribution_image;?>
 
           <p>I dati sono ordinati in modo discendente sulla base del dato preso in esame (<?=$formatname;?>).</p>
 
@@ -67,6 +69,24 @@ else
       </div>
     </div>
   </div>
+
+<?php 
+
+  $pa = 0;
+  echo "<style>";
+  foreach ($data_regions as $elem) {
+    $fixName = explode(' ', $elem['denominazione_regione']);
+
+    if($fixName == "P.A.") { 
+      $pa += $elem[$name];
+      continue;
+    }
+      echo '#'.strtolower($fixName[0]) . ' { fill: ' . getColor(number_format($elem[$name]/$current_name_value, 2)) . ' } ';    
+  } 
+  echo '#trentino { fill: ' . getColor(number_format($pa/$current_name_value, 2)) . ' } ';    
+  echo "</style>";
+
+ ?>
 
 <?php
 

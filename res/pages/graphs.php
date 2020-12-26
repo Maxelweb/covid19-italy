@@ -24,7 +24,7 @@ else
   <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
 
   <div class="row my-3">
-     <div class="col-lg-12 my-3 mx-auto">  
+     <div class="col-lg-6 my-3">  
       <div class="card">
         <div class="card-header"><i class="fas fa-poll"></i> Trend</div>
         <div class="card-body">
@@ -60,7 +60,18 @@ else
           ?>
         </div>
         <div class="card-footer text-muted small">
-          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
+          <i class="fas fa-history"></i> Ultimo aggiornamento: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 my-3">  
+      <div class="card">
+        <div class="card-header"><i class="fas fa-globe"></i> Distribuzione del dato per regioni</div>
+        <div class="card-body">
+          <?=$_distribution_image;?>
+        </div>
+        <div class="card-footer text-muted small">
+          <i class="fas fa-history"></i> Ultimo aggiornamento: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
         </div>
       </div>
     </div>

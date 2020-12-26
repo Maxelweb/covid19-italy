@@ -1,0 +1,30 @@
+body {
+	background-color: #262626;
+}
+
+.cov-navbar {
+	border-bottom: 2px solid #9b1f2b;
+}
+
+.distribution-map {
+	margin: 10px auto;
+	text-align: center;
+}
+
+.distribution-map svg{
+	max-height: 450px;
+}
+
+#loading-govmap svg {
+	width: 100% !important;
+	height: auto !important;
+	cursor: default !important;
+	max-height: 445px;
+}
+
+/*#abruzzo, #basilicata, #calabria, #campania, #emilia-romagna, #friuli, 
+#lazio, #liguria, #lombardia, #marche, #molise, #piemonte, 
+#puglia, #sardegna, #sicilia, #trentino, #toscana, 
+#valle, #umbria, #veneto {
+	fill: white;
+}*/

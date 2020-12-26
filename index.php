@@ -21,18 +21,19 @@
   <meta name="author" content="Mariano Sciacco">
   <title>CovItaly - Covid 19 Italy</title>
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="res/css/covitaly.css">
   <!-- Icono icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="border-bottom: 2px solid #9b1f2b;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top cov-navbar">
     <div class="container">
       <a class="navbar-brand" href="./">
-        <img src="res/images/italy.png" width="26" height="26" alt="">
-        CovItaly &nbsp;
+        <img src="res/images/italy.png" width="40" height="40" class="mr-2" alt="">
+        Cov<strong>Italy</strong> &nbsp;
         <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold d-none d-sm-inline'>".nameFormat($name)."</span>" : "")?>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +64,7 @@
   </nav>
 
   <div class="container" style="margin-top: 100px" id="loading">
-    <p class="text-center my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
+    <p class="text-center text-muted my-4"><i class="fas fa-circle-notch fa-spin"></i> Caricamento...</p>
   </div>
 
   <div class="container text-secondary text-center my-4 small">
