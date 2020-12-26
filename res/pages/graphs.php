@@ -84,6 +84,25 @@ else
   <h3 class="text-center text-light mt-5 mb-4" id="grafici">Grafici <a class="text-muted small" href="#grafici"><i class="fas fa-link"></i></a></h3>
   <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
 
+
+  <?php if($name == "nuovi_positivi"){ ?>
+
+  <div class="row my-3">
+     <div class="col-lg-12 my-3 mx-auto">  
+      <div class="card">
+        <div class="card-header"><i class="fas fa-heartbeat"></i> Rapporto nuovi positivi e tamponi effettuati</div>
+        <div class="card-body">
+          <div id="grafico_rapporto"></div>
+        </div>
+        <div class="card-footer text-muted small">
+          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?php } ?>
+
   <div class="row my-3">
      <div class="col-lg-12 my-3 mx-auto">  
       <div class="card">
@@ -104,24 +123,6 @@ else
       </div>
     </div>
   </div>
-
-  <?php if($name == "nuovi_positivi"){ ?>
-
-  <div class="row my-3">
-     <div class="col-lg-12 my-3 mx-auto">  
-      <div class="card">
-        <div class="card-header"><i class="fas fa-heartbeat"></i> Rapporto nuovi positivi e tamponi effettuati</div>
-        <div class="card-body">
-          <div id="grafico_rapporto"></div>
-        </div>
-        <div class="card-footer text-muted small">
-          <i class="fas fa-history"></i> Ultimo aggiornamento grafici: <strong><?=str_replace('T', ' ', $latest['data']);?></strong>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <?php } ?>
 
 
 <script>
