@@ -53,8 +53,8 @@ function calcTrend($data, $name, $days){
 }
 
 function getColor($value) {
-	$hue = ((0.45 - $value) * 120);
-	return 'hsl('.$hue.', 100%, 50%)';
+	$hue = ((1.7 + $value) * 120);
+	return 'hsla('.$hue.', '.(80).'%, 60%, '.(0.60 + ($value*1.5>=0.40?0.40:$value*1.5)).')';
 }
 
 $_data = array( 

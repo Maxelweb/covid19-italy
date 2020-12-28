@@ -59,8 +59,14 @@
               <a class='dropdown-item' href='https://1dotd4.github.io/covid/' target="_blank"><i class='fas fa-link'></i> Aggiornamenti e grafici aggiuntivi</a>            
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://github.com/pcm-dpc/COVID-19" target="_blank"><i class="fas fa-database"></i> Dati DPC</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownData" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-database"></i> API e dati
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownData">
+              <a class='dropdown-item' href='https://api.covitaly.it'><i class='fas fa-code'></i> API REST (api.covitaly.it)</a> 
+              <a class='dropdown-item' href='https://github.com/pcm-dpc/COVID-19' target="_blank"><i class='fas fa-link'></i> Dati DPC (ufficiali)</a>
+            </div>
           </li>
         </ul>
       </div>

@@ -93,6 +93,7 @@ else {
       <div class="card card-info">
         <div class="card-header"><i class="fas fa-history"></i> Aggiornamenti di covitaly.it</div>
         <div class="card-body">
+        	<div class="alert alert-info"><i class='fas fa-code'></i> Sono state aggiunte delle <a class='underlined' href='https://api.covitaly.it'>API REST</a> per il reperimento di alcuni dati relativi allo status delle regioni. Maggiori informazioni sono disponibili sulla <a class="underlined" href="https://github.com/Maxelweb/covitaly-api">repository Github</a>.</div>
           <ul>
           	<li>v1.3 (26 dicembre 2020) - Aggiornata l'estetica del sito, aggiunta mappa delle zone, aggiunta mappa di distribuzione</li>
           	<li>v1.2 (05 novembre 2020) - Aggiornamento dei grafici e dell'estetica del sito</li>
