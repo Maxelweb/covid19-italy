@@ -27,7 +27,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top cov-navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top cov-navbar">
     <div class="container">
       <a class="navbar-brand" href="./">
         <img src="res/images/italy.png" width="32" height="32" class="mr-2" alt="">
