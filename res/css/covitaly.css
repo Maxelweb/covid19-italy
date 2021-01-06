@@ -1,3 +1,9 @@
+/*
+	Covitaly
+	v1.3
+*/
+
+
 body {
 	background-color: #262626;
 }
@@ -11,11 +17,10 @@ a.underlined, .cov-footer a {
 }
 
 .cov-navbar {
-    background: -moz-linear-gradient(top,  hsla(0,0%,0%,0.65) 0%, hsla(0,0%,0%,0) 100%);
-    background: -webkit-linear-gradient(top,  hsla(0,0%,0%,0.65) 0%,hsla(0,0%,0%,0) 100%);
-    background: linear-gradient(to bottom,  hsla(0,0%,0%,0.65) 0%,hsla(0,0%,0%,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
-	/* border-bottom: 1px solid #555d64;*/
+	border-bottom: 4px solid #5b6d72;
+	background-color: #2f484f;
+	/*border-bottom: 4px solid #5b6672;
+	background-color: #2f3c4f;*/
 }
 
 .distribution-map {
@@ -42,6 +47,26 @@ a.underlined, .cov-footer a {
 	height: auto !important;
 	cursor: default !important;
 	max-height: 445px;
+}
+
+.cov-list a:nth-child(2n+1) {
+    background-color: #E2ECEF;
+}
+
+.cov-list a:hover:nth-child(2n+1) {
+    background-color: #DDE6E8;
+}
+
+a {
+	color: #38707f;
+}
+
+a:hover {
+	color: #39464a;
+}
+
+.badge-dark {
+	background-color: #7c939a;
 }
 
 /*#abruzzo, #basilicata, #calabria, #campania, #emilia-romagna, #friuli, 

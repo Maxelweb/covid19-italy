@@ -19,16 +19,16 @@ require_once("data_regions.php");
 
 				<p>Clicca su uno dei seguenti link per visualizzare i grafici relativi.</p>
 
-				<div class="list-group">
+				<div class="list-group cov-list">
 				<?php
 					foreach($_data as $type)
 					{
 						$val = !empty($data) ? nformat($data[0][$type]) : '<i class="fas fa-circle-notch fa-spin"></i>';
 						$specialPos = $type == "nuovi_positivi" ? 'font-weight-bold' : '';
 
-						echo "<a href='$type' class='$specialPos list-group-item d-flex justify-content-between align-items-center list-group-item-action list-group-item-danger'>
+						echo "<a href='$type' class='$specialPos list-group-item d-flex justify-content-between align-items-center list-group-item-action '>
 						&rarr; ".ucfirst(str_replace('_', ' ', $type))."
-						 <span class='badge badge-danger badge-pill'>".$val."</span></a>";
+						 <span class='badge badge-dark badge-pill'>".$val."</span></a>";
 					}
 				?>
 				</div>
