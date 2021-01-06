@@ -20,7 +20,7 @@
   <title>CovItaly - Covid 19 Italy</title>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="res/css/covitaly.css?v=1.3">
+  <link rel="stylesheet" href="res/css/covitaly.css?v=1.3.1">
   <!-- Icono icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
 </head>
@@ -54,9 +54,11 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStatus" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-globe-americas"></i> Status Regioni
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownStatus">
-              <a class='dropdown-item' href='<?=DATA_GOV_ZONES_FAQ;?>' target="_blank"><i class='fas fa-info-circle'></i> Domande e risposte (governo.it)</a>
-              <a class='dropdown-item' href='https://1dotd4.github.io/covid/' target="_blank"><i class='fas fa-link'></i> Aggiornamenti e grafici aggiuntivi</a>            
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownStatus">              
+              <a class='dropdown-item' href='<?=DATA_GOV_ZONES_FAQ;?>'><i class='fas fa-info-circle'></i> Domande e risposte Covid-19</a>
+              <a class='dropdown-item' href='http://www.salute.gov.it/portale/nuovocoronavirus/archivioNormativaNuovoCoronavirus.jsp?lingua=italiano'><i class='fas fa-gavel'></i> Archivio decreti Covid-19</a>
+              <div class="dropdown-divider"></div>
+              <a class='dropdown-item' href='https://1dotd4.github.io/covid/'><i class='fas fa-link'></i> Aggiornamenti e grafici aggiuntivi</a>            
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -64,8 +66,11 @@
               <i class="fas fa-database"></i> API e dati
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownData">
-              <a class='dropdown-item' href='https://api.covitaly.it'><i class='fas fa-code'></i> API REST (api.covitaly.it)</a> 
+              <a class='dropdown-item' href='https://api.covitaly.it'><i class='fas fa-code'></i> API REST (api.covitaly.it)</a>
               <a class='dropdown-item' href='https://github.com/pcm-dpc/COVID-19' target="_blank"><i class='fas fa-link'></i> Dati DPC (ufficiali)</a>
+              <div class="dropdown-divider"></div>
+              <a class='dropdown-item' href='<?=REPO;?>'><i class='fab fa-github'></i> CovItaly su Github</a> 
+              <a class='dropdown-item' href='https://github.com/Maxelweb/covitaly-api'><i class='fab fa-github'></i> API REST su Github</a> 
             </div>
           </li>
         </ul>
