@@ -13,9 +13,10 @@
  */
 
 
-define("VERSION", "1.3.1");
+define("VERSION", "1.3.2");
 define("REPO", "https://github.com/Maxelweb/covid19-italy");
 define("DATA_DPC", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json");
+define("DATA_DPC_VAX", "https://raw.githubusercontent.com/italia/covid19-opendata-vaccini/master/dati/vaccini-summary-latest.json");
 define("DATA_DPC_REGIONS", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-regioni-latest.json");
 define("DATA_DPC_GLOBAL_LATEST", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale-latest.json");
 define("DATA_GOV_ZONES_FAQ", "http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638");
@@ -56,6 +57,31 @@ function getColor($value) {
 	$hue = ((1.7 + $value) * 120);
 	return 'hsla('.$hue.', '.(80).'%, 60%, '.(0.60 + ($value*1.5>=0.40?0.40:$value*1.5)).')';
 }
+
+$_data_regions_vax = array(
+	"VEN" => "veneto",
+	"LOM" => "lombardia",
+	"LAZ" => "lazio",
+	"SIC" => "sicilia",
+	"PUG" => "puglia",
+	"EMR" => "emilia-romagna",
+	"CAM" => "campania",
+	"PIE" => "piemonte",
+	"MAR" => "marche",
+	"FVG" => "friuli",
+	"TOS" => "toscana",
+	"CAL" => "calabria",
+	"ABR" => "abruzzo",
+	"LIG" => "liguria",
+	"UMB" => "umbria",
+	"SAR" => "sardegna",
+	"BAS" => "basilicata",
+	"MOL" => "molise",
+	"VDA" => "valle",
+	"TRE" => "trentino",
+	"PAB" => "PA-Bolzano",
+	"PAT" => "PA-Trento"
+);
 
 $_data = array( 
 		        "nuovi_positivi",
@@ -140,4 +166,6 @@ $_distribution_image = '<div class="distribution-map">
                     </rdf:rdf>
                   </metadata>
                 </svg>
+                <br>
+                <div class="small text-muted mt-3"><i class="fas fa-info-circle"></i> Il colore più scuro indica una concentrazione maggiore</div>
               </div>';

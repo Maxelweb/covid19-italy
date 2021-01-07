@@ -20,7 +20,7 @@
   <title>CovItaly - Covid 19 Italy</title>
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="res/css/covitaly.css?v=1.3.1">
+  <link rel="stylesheet" href="res/css/covitaly.css?v=1.3.2">
   <!-- Icono icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
 </head>
@@ -32,7 +32,7 @@
       <a class="navbar-brand" href="./">
         <img src="res/images/italy.png" width="32" height="32" class="mr-2" alt="">
         Cov<strong>Italy</strong> &nbsp;
-        <?=(isset($name) && in_array($name, $_data) ? "<span class='text-danger small font-weight-bold d-none d-sm-inline'>".nameFormat($name)."</span>" : "")?>
+        <?=(isset($name) && (in_array($name, $_data) || "vaccini") ? "<span class='text-danger small font-weight-bold d-none d-sm-inline'>".nameFormat($name)."</span>" : "")?>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,9 +44,11 @@
               <i class="fas fa-chart-bar"></i> Grafici e dati
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class='dropdown-item' href='vaccini'><i class='fas fa-syringe'></i> Vaccini</a>
+              <div class="dropdown-divider"></div>
             <?php
               foreach($_data as $type)
-               echo "<a class='dropdown-item' href='$type'><i class='far fa-dot-circle'></i> ".ucfirst(str_replace('_', ' ', $type))."</a>";
+               echo "<a class='dropdown-item' href='$type'><i class='fas fa-notes-medical'></i> ".ucfirst(str_replace('_', ' ', $type))."</a>";
             ?>
             </div>
           </li>
@@ -68,6 +70,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownData">
               <a class='dropdown-item' href='https://api.covitaly.it'><i class='fas fa-code'></i> API REST (api.covitaly.it)</a>
               <a class='dropdown-item' href='https://github.com/pcm-dpc/COVID-19' target="_blank"><i class='fas fa-link'></i> Dati DPC (ufficiali)</a>
+              <a class='dropdown-item' href='https://github.com/italia/covid19-opendata-vaccini' target="_blank"><i class='fas fa-link'></i> Dati Vaccini (ufficiali)</a>
               <div class="dropdown-divider"></div>
               <a class='dropdown-item' href='<?=REPO;?>'><i class='fab fa-github'></i> CovItaly su Github</a> 
               <a class='dropdown-item' href='https://github.com/Maxelweb/covitaly-api'><i class='fab fa-github'></i> API REST su Github</a> 
@@ -84,7 +87,7 @@
 
   <div class="container text-secondary text-center my-4 small cov-footer">
     <a class="text-success" href='<?=REPO;?>'>Covid19 - Italy v<?=VERSION;?></a> <i class="mx-1 fas fa-code"></i> by <a href="https://marianosciacco.it" class="text-light">Mariano Sciacco</a> <br>
-    Questo è un sito <strong>NON</strong> ufficiale. I dati sono forniti da parte del <a class="text-danger" href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile.</a>
+    Questo <strong>NON</strong> è un sito ufficiale. I dati sono forniti da parte del <a class="text-danger" href="https://github.com/pcm-dpc/COVID-19" target="_blank">Dipartimento della Protezione Civile.</a>
   </div>
 
 

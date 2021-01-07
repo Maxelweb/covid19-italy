@@ -1,6 +1,6 @@
 /*
 	Covitaly
-	v1.3.1
+	v1.3.2
 */
 
 
@@ -46,7 +46,7 @@ a.underlined, .cov-footer a {
 	width: 100% !important;
 	height: auto !important;
 	cursor: default !important;
-	max-height: 445px;
+	max-height: 470px;
 }
 
 .cov-list a:nth-child(2n+1) {
@@ -55,6 +55,15 @@ a.underlined, .cov-footer a {
 
 .cov-list a:hover:nth-child(2n+1) {
     background-color: #DDE6E8;
+}
+
+.cov-list a.cov-list-vax {
+	background-color: #E7C0D1;
+	color: #922151;
+}
+
+.cov-list a.cov-list-vax:hover {
+	background-color: #DFBACA;
 }
 
 a {
@@ -68,6 +77,18 @@ a:hover {
 .badge-dark {
 	background-color: #7c939a;
 }
+
+.cov-vax {
+	border-radius: 4px;
+	max-height: 100px;
+}
+
+.cov-vax-icon {
+	width: 16px;
+	height: 16px;
+	vertical-align: text-top;
+}
+
 
 /*#abruzzo, #basilicata, #calabria, #campania, #emilia-romagna, #friuli, 
 #lazio, #liguria, #lombardia, #marche, #molise, #piemonte, 
