@@ -63,17 +63,17 @@ else
                           <td>'.nameFormat($_data_regions_vax[$elem["area"]]).' <small class="text-muted">('.$elem["area"].')</small></td>
                           <td>'.nformat($elem["dosi_somministrate"]).'</td>
                           <td>'.nformat($elem["dosi_consegnate"]).'</td>
-                          <td><em>'.number_format($elem["percentuale_somministrazione"], 2, ',', '.').'%</em></td>
+                          <td><em>'.number_format($elem["percentuale_somministrazione"], 1, ',', '.').'%</em></td>
                         </tr>';
                   $dosi_somm += $elem["dosi_somministrate"];
                   $dosi_cons += $elem["dosi_consegnate"];
                 }
               ?>
-              <tr class="bg-secondary text-light strong">
+              <tr class="bg-danger text-light strong">
                 <td><strong>Totale <?=$formatname;?>:</strong></td>
                 <td><strong><?=nformat($dosi_somm);?></strong></td>
                 <td><strong><?=nformat($dosi_cons);?></strong></td>
-                <td></td>
+                <td><em><strong><?=number_format(($dosi_somm/$dosi_cons)*100, 1, ',', '.');?>%</strong></em></td>
               </tr>
             </table>
           </div>
