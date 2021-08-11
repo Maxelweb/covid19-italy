@@ -20,7 +20,13 @@ else
 ?>
         
   <h3 class="text-center text-light mt-5 mb-4" id="cruscotto">Cruscotto informativo <a class="text-muted small" href="#cruscotto"><i class="fas fa-link"></i></a></h3>
-  <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
+  <h4 class="text-center text-danger mb-4">
+    <?=$formatname;?> &nbsp; 
+    <small class="text-muted">
+      <i class="fas fa-history"></i> 
+      <?=lastUpdate($latest['data']);?>
+    </small>
+  </h4>
 
   <div class="row my-3">
      <div class="col-lg-6 my-3">  
@@ -33,11 +39,17 @@ else
             echo '<div class="trend-number">'.nformat($latest[$name]).' <span>('.($media>0?'+':'').(nformat($media)).')</span></div>';
 
             $today = date("d", strtotime($latest['data'])) == date("d") ? "oggi" : "ieri";
+            
            
             if(($latest[$name] - $data[count($data)-2][$name]) > 0)
               echo "<div class='text-danger my-3'><i class='fas fa-arrow-alt-circle-up'></i> L'ultimo trend registrato ($today) è in <strong>aumento</strong>.</div>";
             else
               echo "<div class='text-success my-3'><i class='fas fa-arrow-alt-circle-down'></i> L'ultimo trend registrato ($today) è in <strong>diminuzione</strong></div>";
+
+            if($name == "nuovi_positivi"){
+              $rapp_pos_tam = number_format($data[count($data)-1]['nuovi_positivi'] / ($data[count($data)-1]['tamponi'] - $data[count($data)-2]['tamponi'])*100.0, 2, ',', '.');
+              echo "<hr class='my-3'><div class='text-muted my-3 h4'><strong>Rapporto positivi e tamponi:</strong> $rapp_pos_tam %</div>";
+            }
 
             echo '<hr class="my-3"> <h4 class="my-4">Trend precedenti</h4>';
 
@@ -82,7 +94,13 @@ else
   </div>
 
   <h3 class="text-center text-light mt-5 mb-4" id="grafici">Grafici <a class="text-muted small" href="#grafici"><i class="fas fa-link"></i></a></h3>
-  <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
+  <h4 class="text-center text-danger mb-4">
+    <?=$formatname;?> &nbsp; 
+    <small class="text-muted">
+      <i class="fas fa-history"></i> 
+      <?=lastUpdate($latest['data']);?>
+    </small>
+  </h4>
 
 
   <?php if($name == "nuovi_positivi"){ ?>
@@ -290,7 +308,7 @@ function drawCurveTypesIncrement() {
 function drawCurveTypesRapportoPositiviTamponi() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Data');
-  data.addColumn('number', 'Rapporto positivi e tamponi');
+  data.addColumn('number', 'Rapporto positivi e tamponi %');
   data.addColumn({ type: 'number', role: 'annotation' });
 
   data.addRows([ 
@@ -301,7 +319,7 @@ function drawCurveTypesRapportoPositiviTamponi() {
         if($i == 0) 
           continue;
         else
-          $var = ($x[$i]['nuovi_positivi'])/($x[$i]['tamponi'] - $x[$i-1]['tamponi']);
+          $var = ($x[$i]['nuovi_positivi'])/($x[$i]['tamponi'] - $x[$i-1]['tamponi'])*100.0;
 
         echo "['".explode('T', $x[$i]['data'])[0]."',"
                 .$var.","

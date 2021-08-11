@@ -24,7 +24,13 @@ else
 
 ?>
   <h3 class="text-center text-light mt-5 mb-4" id="distribuzione">Distribuzione del dato <a class="text-muted small" href="#distribuzione"><i class="fas fa-link"></i></a></h3>
-  <h4 class="text-center text-danger mb-4"><?=$formatname;?></h4>
+  <h4 class="text-center text-danger mb-4">
+    <?=$formatname;?> &nbsp; 
+    <small class="text-muted">
+      <i class="fas fa-history"></i> 
+      <?=lastUpdate($latest['data']);?>
+    </small>
+  </h4>
   
   <div class="row my-3">
     <div class="col-lg-8 my-3">  

@@ -8,7 +8,12 @@
 require_once("data_home.php");
 require_once("data_regions.php");
 
+if(!empty($data))
+	$latest_update = lastUpdate($data[0]['data']);
+
 ?>
+
+<h3 class="text-center text-muted mt-5 mb-4 h5" id="cruscotto"><i class="fas fa-history"></i> Ultimo aggiornamento: <strong><?=$latest_update;?></strong></h3>
 
 <div class="row my-3">
     <div class="col-lg-6 my-3 mx-auto">
@@ -98,6 +103,7 @@ else {
         <div class="card-body">
         	<div class="alert alert-info"><i class='fas fa-code'></i> Sono state aggiunte delle <a class='underlined' href='https://api.covitaly.it'>API REST</a> per il reperimento di alcuni dati relativi allo status delle regioni. Maggiori informazioni sono disponibili sulla <a class="underlined" href="https://github.com/Maxelweb/covitaly-api">repository Github</a>.</div>
           <ul>
+			<li>v1.3.3 (11 agosto 2021) - Aggiunta data dell'ultimo aggiornamento in modo più evidente, aggiornato il tema del sito
           	<li>v1.3.2 (7 gennaio 2021) - Aggiunte le statistiche sui vaccini</li>
           	<li>v1.3.1 (6 gennaio 2021) - Aggiornato il tema del sito, aggiunti link sul menù superiore</li>
           	<li>v1.3 (26 dicembre 2020) - Aggiornata l'estetica del sito, aggiunta mappa delle zone, aggiunta mappa di distribuzione</li>

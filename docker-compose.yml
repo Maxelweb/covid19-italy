@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  serverd:
+    build: ./
+    container_name: covitaly-webapp 
+    restart: always
+    expose:
+      - "80"
+      - "443"
+    ports:
+      - "8080:80"
+      - "4430:443"
+    volumes: 
+      - ./:/var/www/html/

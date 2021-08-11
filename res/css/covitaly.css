@@ -17,10 +17,11 @@ a.underlined, .cov-footer a {
 }
 
 .cov-navbar {
-	border-bottom: 3px solid #5b6d72;
-	border-color:  rgba(91,109,114,0.90);
-	background-color: rgb(47,72,79);
-	background-color: rgba(47,72,79,0.94);
+	border-bottom: 2px solid #5b6d72;
+    border-color: rgb(70 70 70 / 90%);
+    background-color: #191818;
+	/* background-color: rgb(47,72,79);
+	background-color: rgba(47,72,79,0.94); */
 }
 
 .distribution-map {
@@ -96,3 +97,4 @@ a:hover {
 #valle, #umbria, #veneto {
 	fill: white;
 }*/
+

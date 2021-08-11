@@ -41,6 +41,43 @@ function outputErrorLoading() {
 	echo "<p class='text-danger my-4 text-center'><i class='far fa-frown'></i> Non è stato possibile caricare i dati. Riprova più tardi.</p>";
 }
 
+function formatDate($date) {
+  $date = new DateTime($date);
+  $age = $date->getTimestamp();
+  $age = time()-$age;
+  $years = floor($age/(3600*24*7*4*12));
+  $months = floor($age/(3600*24*7*4));
+  $weeks = floor($age/(3600*24*7));
+  $days = floor($age/(3600*24));
+  $hours = floor($age/3600);
+  $minutes = floor($age/60);
+  $seconds = $age;
+
+  if($years>0)
+    $age = ($years>1) ? sprintf('%d anni fa', $years) : '1 anno fa';
+  elseif($months>0)
+    $age = ($months>1) ? sprintf('%d mesi fa', $months) : '1 mese fa';
+  elseif($weeks>0)
+    $age = ($weeks>1) ? sprintf('%d settimane fa', $weeks) : '1 settimana fa';
+  elseif($days>0)
+    $age = ($days>1) ? sprintf('%d giorni fa', $days) : '1 giorno fa';
+  elseif($hours>0)
+    $age = ($hours>1) ? sprintf('%d ore fa', $hours) : '1 ora fa';
+  elseif($minutes>0)
+    $age = ($minutes>1) ? sprintf('%d minuti fa', $minutes) : '1 minuto fa';
+  elseif($seconds>=0)
+    $age = ($seconds>1) ? sprintf('%d secondi fa', $seconds) : '1 secondo fa';
+  else
+    $age = $date;
+
+  return $age;
+}	
+
+
+function lastUpdate($date) {
+  return formatDate($date);
+}
+
 function calcTrend($data, $name, $days){
 	$x = array_slice($data,(-1)*$days,$days);
 	$total = 0;
@@ -55,7 +92,7 @@ function calcTrend($data, $name, $days){
 
 function getColor($value) {
 	$hue = ((1.7 + $value) * 120);
-	return 'hsla('.$hue.', '.(80).'%, 60%, '.(0.60 + ($value*1.5>=0.40?0.40:$value*1.5)).')';
+	return 'hsla('.$hue.', '.(80).'%, 10%, '.(0.60 + ($value*1.5>=0.40?0.40:$value*1.5)).')';
 }
 
 $_data_regions_vax = array(
